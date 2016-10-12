@@ -9,6 +9,7 @@ import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private CameraManager manager;
     private String flashCameraId;
     private ToggleButton toggleButtons;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,12 +88,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void toggleFlash(boolean onOff) {
 
+        Log.d("MyFlash", "Setting Torch mode to " + onOff);
         if (manager == null || flashCameraId == null) return;
 
         try {
             manager.setTorchMode(flashCameraId,onOff);
         } catch (CameraAccessException e) {
-            e.printStackTrace();
+            Log.e("MyFlash","Unable to change the Torchmode", e);
         }
 
         toggleButtons.setChecked(onOff);
