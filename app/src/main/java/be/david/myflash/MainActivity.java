@@ -59,15 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if (isChecked) {
-
-                    toggleFlash(true);
-
-                } else {
-
-                    toggleFlash(false);
-
-                }
+               toggleFlash(isChecked);
 
             }
         });
@@ -120,5 +112,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+        alert.show();
     }
 }
